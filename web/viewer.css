@@ -147,6 +147,7 @@
   /* CUSTOM */
   --toolbarButton-sparkle: url(images/pdfViewerSparkle.svg);
   --toolbarButton-vault: url(images/pdfViewerVault.svg);
+  --toolbarButton-autosave: url(images/pdfViewerCloudSave.svg);
 }
 
 :root:dir(rtl) {

@@ -65,11 +65,11 @@ class SecondaryToolbar {
   constructor(options, eventBus) {
     this.#opts = options;
     const buttons = [
-      {
-        element: options.presentationModeButton,
-        eventName: "presentationmode",
-        close: true,
-      },
+    //   {
+    //     element: options.presentationModeButton,
+    //     eventName: "presentationmode",
+    //     close: true,
+    //   },
       { element: options.printButton, eventName: "print", close: true },
       { element: options.downloadButton, eventName: "download", close: true },
       { element: options.viewBookmarkButton, eventName: null, close: true },
@@ -97,48 +97,48 @@ class SecondaryToolbar {
         eventDetails: { tool: CursorTool.HAND },
         close: true,
       },
-      {
-        element: options.scrollPageButton,
-        eventName: "switchscrollmode",
-        eventDetails: { mode: ScrollMode.PAGE },
-        close: true,
-      },
-      {
-        element: options.scrollVerticalButton,
-        eventName: "switchscrollmode",
-        eventDetails: { mode: ScrollMode.VERTICAL },
-        close: true,
-      },
-      {
-        element: options.scrollHorizontalButton,
-        eventName: "switchscrollmode",
-        eventDetails: { mode: ScrollMode.HORIZONTAL },
-        close: true,
-      },
-      {
-        element: options.scrollWrappedButton,
-        eventName: "switchscrollmode",
-        eventDetails: { mode: ScrollMode.WRAPPED },
-        close: true,
-      },
-      {
-        element: options.spreadNoneButton,
-        eventName: "switchspreadmode",
-        eventDetails: { mode: SpreadMode.NONE },
-        close: true,
-      },
-      {
-        element: options.spreadOddButton,
-        eventName: "switchspreadmode",
-        eventDetails: { mode: SpreadMode.ODD },
-        close: true,
-      },
-      {
-        element: options.spreadEvenButton,
-        eventName: "switchspreadmode",
-        eventDetails: { mode: SpreadMode.EVEN },
-        close: true,
-      },
+    //   {
+    //     element: options.scrollPageButton,
+    //     eventName: "switchscrollmode",
+    //     eventDetails: { mode: ScrollMode.PAGE },
+    //     close: true,
+    //   },
+    //   {
+    //     element: options.scrollVerticalButton,
+    //     eventName: "switchscrollmode",
+    //     eventDetails: { mode: ScrollMode.VERTICAL },
+    //     close: true,
+    //   },
+    //   {
+    //     element: options.scrollHorizontalButton,
+    //     eventName: "switchscrollmode",
+    //     eventDetails: { mode: ScrollMode.HORIZONTAL },
+    //     close: true,
+    //   },
+    //   {
+    //     element: options.scrollWrappedButton,
+    //     eventName: "switchscrollmode",
+    //     eventDetails: { mode: ScrollMode.WRAPPED },
+    //     close: true,
+    //   },
+    //   {
+    //     element: options.spreadNoneButton,
+    //     eventName: "switchspreadmode",
+    //     eventDetails: { mode: SpreadMode.NONE },
+    //     close: true,
+    //   },
+    //   {
+    //     element: options.spreadOddButton,
+    //     eventName: "switchspreadmode",
+    //     eventDetails: { mode: SpreadMode.ODD },
+    //     close: true,
+    //   },
+    //   {
+    //     element: options.spreadEvenButton,
+    //     eventName: "switchspreadmode",
+    //     eventDetails: { mode: SpreadMode.EVEN },
+    //     close: true,
+    //   },
       {
         element: options.imageAltTextSettingsButton,
         eventName: "imagealttextsettings",
@@ -192,8 +192,8 @@ class SecondaryToolbar {
 
     // Reset the Scroll/Spread buttons too, since they're document specific.
     this.eventBus.dispatch("switchcursortool", { source: this, reset: true });
-    this.#scrollModeChanged({ mode: ScrollMode.VERTICAL });
-    this.#spreadModeChanged({ mode: SpreadMode.NONE });
+    // this.#scrollModeChanged({ mode: ScrollMode.VERTICAL });
+    // this.#spreadModeChanged({ mode: SpreadMode.NONE });
   }
 
   #updateUIState() {
@@ -236,8 +236,8 @@ class SecondaryToolbar {
     }
 
     eventBus._on("cursortoolchanged", this.#cursorToolChanged.bind(this));
-    eventBus._on("scrollmodechanged", this.#scrollModeChanged.bind(this));
-    eventBus._on("spreadmodechanged", this.#spreadModeChanged.bind(this));
+    // eventBus._on("scrollmodechanged", this.#scrollModeChanged.bind(this));
+    // eventBus._on("spreadmodechanged", this.#spreadModeChanged.bind(this));
   }
 
   #cursorToolChanged({ tool, disabled }) {
@@ -250,46 +250,46 @@ class SecondaryToolbar {
     cursorHandToolButton.disabled = disabled;
   }
 
-  #scrollModeChanged({ mode }) {
-    const {
-      scrollPageButton,
-      scrollVerticalButton,
-      scrollHorizontalButton,
-      scrollWrappedButton,
-      spreadNoneButton,
-      spreadOddButton,
-      spreadEvenButton,
-    } = this.#opts;
+//   #scrollModeChanged({ mode }) {
+//     const {
+//       scrollPageButton,
+//       scrollVerticalButton,
+//       scrollHorizontalButton,
+//       scrollWrappedButton,
+//       spreadNoneButton,
+//       spreadOddButton,
+//       spreadEvenButton,
+//     } = this.#opts;
 
-    toggleCheckedBtn(scrollPageButton, mode === ScrollMode.PAGE);
-    toggleCheckedBtn(scrollVerticalButton, mode === ScrollMode.VERTICAL);
-    toggleCheckedBtn(scrollHorizontalButton, mode === ScrollMode.HORIZONTAL);
-    toggleCheckedBtn(scrollWrappedButton, mode === ScrollMode.WRAPPED);
+//     toggleCheckedBtn(scrollPageButton, mode === ScrollMode.PAGE);
+//     toggleCheckedBtn(scrollVerticalButton, mode === ScrollMode.VERTICAL);
+//     toggleCheckedBtn(scrollHorizontalButton, mode === ScrollMode.HORIZONTAL);
+//     toggleCheckedBtn(scrollWrappedButton, mode === ScrollMode.WRAPPED);
 
-    // Permanently *disable* the Scroll buttons when PAGE-scrolling is being
-    // enforced for *very* long/large documents; please see the `BaseViewer`.
-    const forceScrollModePage =
-      this.pagesCount > PagesCountLimit.FORCE_SCROLL_MODE_PAGE;
-    scrollPageButton.disabled = forceScrollModePage;
-    scrollVerticalButton.disabled = forceScrollModePage;
-    scrollHorizontalButton.disabled = forceScrollModePage;
-    scrollWrappedButton.disabled = forceScrollModePage;
+//     // Permanently *disable* the Scroll buttons when PAGE-scrolling is being
+//     // enforced for *very* long/large documents; please see the `BaseViewer`.
+//     const forceScrollModePage =
+//       this.pagesCount > PagesCountLimit.FORCE_SCROLL_MODE_PAGE;
+//     scrollPageButton.disabled = forceScrollModePage;
+//     scrollVerticalButton.disabled = forceScrollModePage;
+//     scrollHorizontalButton.disabled = forceScrollModePage;
+//     scrollWrappedButton.disabled = forceScrollModePage;
 
-    // Temporarily *disable* the Spread buttons when horizontal scrolling is
-    // enabled, since the non-default Spread modes doesn't affect the layout.
-    const isHorizontal = mode === ScrollMode.HORIZONTAL;
-    spreadNoneButton.disabled = isHorizontal;
-    spreadOddButton.disabled = isHorizontal;
-    spreadEvenButton.disabled = isHorizontal;
-  }
+//     // Temporarily *disable* the Spread buttons when horizontal scrolling is
+//     // enabled, since the non-default Spread modes doesn't affect the layout.
+//     const isHorizontal = mode === ScrollMode.HORIZONTAL;
+//     spreadNoneButton.disabled = isHorizontal;
+//     spreadOddButton.disabled = isHorizontal;
+//     spreadEvenButton.disabled = isHorizontal;
+//   }
 
-  #spreadModeChanged({ mode }) {
-    const { spreadNoneButton, spreadOddButton, spreadEvenButton } = this.#opts;
+//   #spreadModeChanged({ mode }) {
+//     const { spreadNoneButton, spreadOddButton, spreadEvenButton } = this.#opts;
 
-    toggleCheckedBtn(spreadNoneButton, mode === SpreadMode.NONE);
-    toggleCheckedBtn(spreadOddButton, mode === SpreadMode.ODD);
-    toggleCheckedBtn(spreadEvenButton, mode === SpreadMode.EVEN);
-  }
+//     toggleCheckedBtn(spreadNoneButton, mode === SpreadMode.NONE);
+//     toggleCheckedBtn(spreadOddButton, mode === SpreadMode.ODD);
+//     toggleCheckedBtn(spreadEvenButton, mode === SpreadMode.EVEN);
+//   }
 
   open() {
     if (this.opened) {
