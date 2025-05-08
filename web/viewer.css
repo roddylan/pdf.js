@@ -144,6 +144,9 @@
   );
   --secondaryToolbarButton-documentProperties-icon: url(images/secondaryToolbarButton-documentProperties.svg);
   --editorParams-stampAddImage-icon: url(images/toolbarButton-zoomIn.svg);
+  /* CUSTOM */
+  --toolbarButton-sparkle: url(images/pdfViewerSparkle.svg);
+  --toolbarButton-vault: url(images/pdfViewerVault.svg);
 }
 
 :root:dir(rtl) {
