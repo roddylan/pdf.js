@@ -144,10 +144,11 @@
   );
   --secondaryToolbarButton-documentProperties-icon: url(images/secondaryToolbarButton-documentProperties.svg);
   --editorParams-stampAddImage-icon: url(images/toolbarButton-zoomIn.svg);
+  
   /* CUSTOM */
-  --toolbarButton-sparkle: url(images/pdfViewerSparkle.svg);
-  --toolbarButton-vault: url(images/pdfViewerVault.svg);
-  --toolbarButton-autosave: url(images/pdfViewerCloudSave.svg);
+  --toolbarButton-sparkle-icon: url(images/pdfViewerSparkle.svg);
+  --toolbarButton-vault-icon: url(images/pdfViewerVault.svg);
+  --secondaryToolbarButton-autosave-icon: url(images/pdfViewerCloudSave.svg);
 }
 
 :root:dir(rtl) {
@@ -564,6 +565,14 @@ body {
 #viewFindButton::before {
   mask-image: var(--toolbarButton-search-icon);
 }
+
+/* SET CUSTOM BUTTON ICONS */
+#secondaryAutoSave::before {
+  mask-image: var(--secondaryToolbarButton-autosave-icon);
+}
+
+
+/* ------------------- */
 
 .pdfSidebarNotification::after {
   position: absolute;

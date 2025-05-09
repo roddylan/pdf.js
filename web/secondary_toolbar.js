@@ -70,33 +70,33 @@ class SecondaryToolbar {
     //     eventName: "presentationmode",
     //     close: true,
     //   },
-      { element: options.printButton, eventName: "print", close: true },
-      { element: options.downloadButton, eventName: "download", close: true },
-      { element: options.viewBookmarkButton, eventName: null, close: true },
-      { element: options.firstPageButton, eventName: "firstpage", close: true },
-      { element: options.lastPageButton, eventName: "lastpage", close: true },
-      {
-        element: options.pageRotateCwButton,
-        eventName: "rotatecw",
-        close: false,
-      },
-      {
-        element: options.pageRotateCcwButton,
-        eventName: "rotateccw",
-        close: false,
-      },
-      {
-        element: options.cursorSelectToolButton,
-        eventName: "switchcursortool",
-        eventDetails: { tool: CursorTool.SELECT },
-        close: true,
-      },
-      {
-        element: options.cursorHandToolButton,
-        eventName: "switchcursortool",
-        eventDetails: { tool: CursorTool.HAND },
-        close: true,
-      },
+    { element: options.printButton, eventName: "print", close: true },
+    { element: options.downloadButton, eventName: "download", close: true },
+    { element: options.viewBookmarkButton, eventName: null, close: true },
+    { element: options.firstPageButton, eventName: "firstpage", close: true },
+    { element: options.lastPageButton, eventName: "lastpage", close: true },
+    {
+      element: options.pageRotateCwButton,
+      eventName: "rotatecw",
+      close: false,
+    },
+    {
+      element: options.pageRotateCcwButton,
+      eventName: "rotateccw",
+      close: false,
+    },
+    {
+      element: options.cursorSelectToolButton,
+      eventName: "switchcursortool",
+      eventDetails: { tool: CursorTool.SELECT },
+      close: true,
+    },
+    {
+      element: options.cursorHandToolButton,
+      eventName: "switchcursortool",
+      eventDetails: { tool: CursorTool.HAND },
+      close: true,
+    },
     //   {
     //     element: options.scrollPageButton,
     //     eventName: "switchscrollmode",
@@ -218,6 +218,8 @@ class SecondaryToolbar {
 
     // All items within the secondary toolbar.
     for (const { element, eventName, close, eventDetails } of buttons) {
+      console.log(`el=${element}, ev_name=${eventName}, ,close=${close}, details=${eventDetails}`)
+      if (element === null) continue;
       element.addEventListener("click", evt => {
         if (eventName !== null) {
           eventBus.dispatch(eventName, { source: this, ...eventDetails });
