@@ -290,6 +290,14 @@ class Toolbar {
         this.#colorPicker?.updateColor(value);
       });
     }
+
+    // create listeners for customs
+    for (const key in CustomToolbarEvents) {
+      const ev = CustomToolbarEvents[key];
+      eventBus.on(ev, (e) => {
+        window.dispatchEvent(new CustomEvent(`toolbar-${ev}-request`));
+      });
+    }
   }
 
   #editorModeChanged({ mode }) {
