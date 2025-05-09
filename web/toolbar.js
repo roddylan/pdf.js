@@ -24,6 +24,13 @@ import {
   toggleExpandedBtn,
 } from "./ui_utils.js";
 
+const CustomToolbarEvents = {
+  AI: "aitoggle",
+  VAULT: "vaulttoggle",
+  AUTOSAVE: "autosavetoggle",
+  USER: "userbutton",
+}
+
 /**
  * @typedef {Object} ToolbarOptions
  * @property {HTMLDivElement} container - Container for the secondary toolbar.
@@ -41,6 +48,10 @@ import {
  * @property {HTMLButtonElement} editorFreeTextButton - Button to switch to
  *   FreeText editing.
  * @property {HTMLButtonElement} download - Button to download the document.
+ * @property {HTMLButtonElement} aiButton - Button for ai.
+ * @property {HTMLButtonElement} vaultButton - Button for vault.
+ * @property {HTMLButtonElement} autosaveButton - Button for autosave.
+ * @property {HTMLButtonElement} userButton - Button for user.
  */
 
 class Toolbar {
@@ -131,6 +142,11 @@ class Toolbar {
           },
         },
       },
+      // CUSTOM BUTTONS
+      { element: options.aiButton, eventName: CustomToolbarEvents.AI, close: true },
+      // { element: options.vaultButton, eventName: CustomToolbarEvents.VAULT, close: true },
+      // { element: options.autosaveButton, eventName: CustomToolbarEvents.AUTOSAVE},
+      // { element: options.userButton, eventName: CustomToolbarEvents.USER, close: true},
     ];
 
     // Bind the event listeners for click and various other actions.

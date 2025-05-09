@@ -73,6 +73,9 @@ function getViewerConfiguration() {
         "editorSignatureParamsToolbar"
       ),
       download: document.getElementById("downloadButton"),
+      // CUSTOM TOOLBAR BUTTONS ----------------------------------
+      aiButton: document.getElementById("aiButton"),
+      // ---------------------------------------------------------
     },
     secondaryToolbar: {
       toolbar: document.getElementById("secondaryToolbar"),
