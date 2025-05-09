@@ -24,6 +24,10 @@ import {
 } from "./ui_utils.js";
 import { PagesCountLimit } from "./pdf_viewer.js";
 
+const CustomSecondaryEvents = {
+  AUTOSAVE: "autosavetoggle",
+}
+
 /**
  * @typedef {Object} SecondaryToolbarOptions
  * @property {HTMLDivElement} toolbar - Container for the secondary toolbar.
@@ -53,6 +57,7 @@ import { PagesCountLimit } from "./pdf_viewer.js";
  *   the image alt-text settings dialog.
  * @property {HTMLButtonElement} documentPropertiesButton - Button for opening
  *   the document properties dialog.
+ * @property {HTMLButtonElement} autosaveButton - Button for autosave
  */
 
 class SecondaryToolbar {
@@ -149,6 +154,11 @@ class SecondaryToolbar {
         eventName: "documentproperties",
         close: true,
       },
+      {
+        element: options.autosaveButton,
+        eventName: CustomSecondaryEvents.AUTOSAVE,
+        close: true,
+      },
     ];
     if (typeof PDFJSDev === "undefined" || PDFJSDev.test("GENERIC")) {
       buttons.push({
@@ -215,13 +225,19 @@ class SecondaryToolbar {
     const { toggleButton } = this.#opts;
     // Button to toggle the visibility of the secondary toolbar.
     toggleButton.addEventListener("click", this.toggle.bind(this));
-
+    
     // All items within the secondary toolbar.
     for (const { element, eventName, close, eventDetails } of buttons) {
-      console.log(`el=${element}, ev_name=${eventName}, ,close=${close}, details=${eventDetails}`)
+      // console.log(`el=${element}, ev_name=${eventName}, ,close=${close}, details=${eventDetails}`)
       if (element === null) continue;
       element.addEventListener("click", evt => {
         if (eventName !== null) {
+          // if (Object.values(CustomSecondaryEvents).includes(eventName)) {
+          //   // handle custom secondary events
+          //   console.log(eventName);
+          // } else {
+          //   eventBus.dispatch(eventName, { source: this, ...eventDetails });
+          // }
           eventBus.dispatch(eventName, { source: this, ...eventDetails });
         }
         if (close) {
@@ -236,7 +252,12 @@ class SecondaryToolbar {
         });
       });
     }
-
+    for (const key in CustomSecondaryEvents) {
+      const ev = CustomSecondaryEvents[key];
+      eventBus.on(ev, (e) => {
+        window.dispatchEvent(new CustomEvent(`secondary-${ev}-request`));
+      });
+    }
     eventBus._on("cursortoolchanged", this.#cursorToolChanged.bind(this));
     // eventBus._on("scrollmodechanged", this.#scrollModeChanged.bind(this));
     // eventBus._on("spreadmodechanged", this.#spreadModeChanged.bind(this));

@@ -98,6 +98,7 @@ function getViewerConfiguration() {
       spreadNoneButton: document.getElementById("spreadNone"),
       spreadOddButton: document.getElementById("spreadOdd"),
       spreadEvenButton: document.getElementById("spreadEven"),
+      autosaveButton: document.getElementById("secondaryAutoSave"),
       imageAltTextSettingsButton: document.getElementById(
         "imageAltTextSettings"
       ),
