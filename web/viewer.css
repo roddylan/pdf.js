@@ -31,7 +31,8 @@
   --toolbar-vertical-padding: 2px;
   --icon-size: 16px;
 
-  --toolbar-icon-opacity: 0.7;
+  /* --toolbar-icon-opacity: 0.7; */
+  --toolbar-icon-opacity: 1;
   --doorhanger-icon-opacity: 0.9;
   --doorhanger-height: 8px;
 
@@ -566,11 +567,19 @@ body {
   mask-image: var(--toolbarButton-search-icon);
 }
 
-/* SET CUSTOM BUTTON ICONS */
+/* SET CUSTOM SECONDARY BUTTON ICONS */
 #secondaryAutoSave::before {
   mask-image: var(--secondaryToolbarButton-autosave-icon);
 }
 
+#aiButton::before {
+  mask-image: var(--toolbarButton-sparkle-icon);
+  background-color: #ff00f7;
+}
+
+#vaultButton::before {
+  mask-image: var(--toolbarButton-vault-icon);
+}
 
 /* ------------------- */
 
