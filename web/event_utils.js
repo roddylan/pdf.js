@@ -98,6 +98,10 @@ class EventBus {
    */
   dispatch(eventName, data) {
     const eventListeners = this.#listeners[eventName];
+    if (eventName === "autosavetoggle") {
+      console.log("fuck me");
+      console.log(eventListeners);
+    }
     if (!eventListeners || eventListeners.length === 0) {
       return;
     }

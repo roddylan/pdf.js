@@ -26,9 +26,9 @@ import {
 
 const CustomToolbarEvents = {
   AI: "aitoggle",
-  VAULT: "vaulttoggle",
-  AUTOSAVE: "autosavetoggle",
-  USER: "userbutton",
+  // VAULT: "vaulttoggle",
+  // AUTOSAVE: "autosavetoggle",
+  // USER: "userbutton",
 }
 
 /**
