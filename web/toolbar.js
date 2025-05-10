@@ -26,9 +26,9 @@ import {
 
 const CustomToolbarEvents = {
   AI: "aitoggle",
-  // VAULT: "vaulttoggle",
-  // AUTOSAVE: "autosavetoggle",
-  // USER: "userbutton",
+  VAULT: "vaulttoggle",
+  AUTOSAVE: "tb_autosavetoggle",
+  USER: "userbutton",
 }
 
 /**
@@ -295,7 +295,9 @@ class Toolbar {
     for (const key in CustomToolbarEvents) {
       const ev = CustomToolbarEvents[key];
       eventBus.on(ev, (e) => {
-        window.dispatchEvent(new CustomEvent(`toolbar-${ev}-request`));
+        const custom_ev = new CustomEvent(`toolbar-${ev}-request`);
+        window.parent.dispatchEvent(custom_ev);
+        window.parent.postMessage(custom_ev.type);
       });
     }
   }

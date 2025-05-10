@@ -256,8 +256,8 @@ class SecondaryToolbar {
       const ev = CustomSecondaryEvents[key];
       eventBus.on(ev, (e) => {
         const custom_ev = new CustomEvent(`secondary-${ev}-request`);
-        window.dispatchEvent(custom_ev);
-        console.log(custom_ev.type);
+        window.parent.dispatchEvent(custom_ev);
+        window.parent.postMessage(custom_ev.type);
       });
     }
     eventBus._on("cursortoolchanged", this.#cursorToolChanged.bind(this));
