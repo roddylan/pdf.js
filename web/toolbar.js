@@ -296,6 +296,7 @@ class Toolbar {
       const ev = CustomToolbarEvents[key];
       eventBus.on(ev, (e) => {
         const custom_ev = new CustomEvent(`toolbar-${ev}-request`);
+        // const custom_ev = new Event(`toolbar-${ev}-request`);
         window.parent.dispatchEvent(custom_ev);
         window.parent.postMessage(custom_ev.type);
       });

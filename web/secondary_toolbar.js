@@ -256,6 +256,7 @@ class SecondaryToolbar {
       const ev = CustomSecondaryEvents[key];
       eventBus.on(ev, (e) => {
         const custom_ev = new CustomEvent(`secondary-${ev}-request`);
+        // const custom_ev = new Event(`secondary-${ev}-request`);
         window.parent.dispatchEvent(custom_ev);
         window.parent.postMessage(custom_ev.type);
       });
